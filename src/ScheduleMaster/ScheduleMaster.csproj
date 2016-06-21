@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DlqMaster.Web</RootNamespace>
-    <AssemblyName>DlqMaster.Web</AssemblyName>
+    <RootNamespace>ScheduleMaster</RootNamespace>
+    <AssemblyName>ScheduleMaster</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -200,7 +200,7 @@
     <Compile Include="Component\HipChatActionCommand.cs" />
     <Compile Include="Component\HangfireAdapter.cs" />
     <Compile Include="Controllers\ActionController.cs" />
-    <Compile Include="Controllers\BaseDlqController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Component\EmailActionCommand.cs" />
     <Compile Include="Component\ICommand.cs" />
     <Compile Include="Component\JobCommand.cs" />
