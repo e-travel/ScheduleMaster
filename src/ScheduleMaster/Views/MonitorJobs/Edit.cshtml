@@ -1,0 +1,56 @@
+@using System.Data.Entity.Core.Objects
+@using Amazon.CodePipeline.Model
+@using ScheduleMaster.Models.Entities
+@using GridMvc.Html
+@model ScheduleMaster.Models.ViewModels.MonitorJobs.JobDetailsViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Monitor Job</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Monitor Job Details</h3>
+        <hr />
+        @using (Html.BeginForm("Edit", "MonitorJobs", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("_JobDetails", Model)
+
+        }
+
+
+    </div>
+    <div class="col-md-6">
+
+        <h3>Actions Configuration</h3>
+        <hr />
+
+        <div>
+            @Html.Grid(Model.JobConfiguration.ActionConfigurations.OrderBy(j => j.Id)).Columns(columns =>
+       {
+           columns.Add(action => action.Id).Titled("Id").Sortable(false).SetWidth("5%").Filterable(true);
+           columns.Add(action => action.Name).Titled("Name").Sortable(true).SetWidth("10%").Filterable(true);
+           columns.Add().Titled("Action Type").Encoded(false).Sanitized(false).RenderValueAs(c => @Html.Label(ObjectContext.GetObjectType(c.GetType()).Name)).SetWidth("10%");
+           columns.Add(action => action.Active).Titled("Active").Sortable(true);
+           columns.Add().Titled("").Encoded(false).Sanitized(false).RenderValueAs(c => @Html.ActionLink("Edit", "Edit", new { Controller = "Action", id = c.Id, ActionType = ObjectContext.GetObjectType(c.GetType()).Name })).SetWidth("5%");
+           columns.Add().Titled("").Encoded(false).Sanitized(false).RenderValueAs(c => @Html.ActionLink("Delete", "Delete", new { Controller = "Action", id = c.Id, jobConfigurationId = Model.JobConfiguration.Id })).SetWidth("5%");
+       }).WithPaging(5)
+        </div>
+
+        @using (@Html.BeginForm("Create", "Action", FormMethod.Get))
+        {
+            <input name="jobId" value="@Model.JobConfiguration.Id" type="hidden" />
+
+            <select name="actionType">
+                <option value="EmailActionConfiguration">EmailActionConfiguration</option>
+                <option value="HipchatActionConfiguration">HipchatActionConfiguration</option>
+            </select>
+            <input type="submit" class="btn btn-primary" value="Add">
+        }
+    </div>
+</div>
+

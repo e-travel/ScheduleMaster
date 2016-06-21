@@ -1,0 +1,21 @@
+﻿@using GridMvc.Html
+@model ScheduleMaster.Models.ViewModels.MonitorJobs.IndexViewModel
+@{
+    ViewBag.Title = "Monitor Jobs Index";
+}
+
+<h2>Monitor Jobs</h2>
+@Html.ActionLink("Add","Create",new { searchTerm = Model.SearchTerm},new { @class="btn btn-primary"})
+<hr/>
+@Html.Grid(Model.JobConfigurations.OrderBy(j => j.Id)).Columns(columns =>
+{
+    columns.Add(job => job.Id).Titled("Id").Sortable(false).SetWidth("5%").Filterable(true);
+    columns.Add(job => job.Name).Titled("Name").Sortable(true).SetWidth("10%").Filterable(true);
+    columns.Add(job => job.LongPollingTimeSeconds).Titled("Polling (Seconds)").SetWidth("10%").Sortable(false);
+    columns.Add(job => job.NumberOfDequeueMessages).Titled("Batch size").SetWidth("10%").Sortable(false);
+    columns.Add(job => job.SqsRegion).Titled("Queue region").Sortable(true).SetWidth("10%").Filterable(true);
+    columns.Add(job => job.SqsQueueUrl).Titled("Queue url").Sortable(true).SetWidth("10%").Filterable(true);
+    columns.Add(job => job.IsEnabled).Titled("Enabled").Sortable(true).SetWidth("15%").Filterable(true);
+    columns.Add().Titled("").Encoded(false).Sanitized(false).RenderValueAs(c => @Html.ActionLink("Edit", "Edit", new { id = c.Id, searchTerm=Model.SearchTerm })).SetWidth("5%");
+    columns.Add().Titled("").Encoded(false).Sanitized(false).RenderValueAs(c => @Html.ActionLink("Delete", "Delete", new { id = c.Id, searchTerm = Model.SearchTerm })).SetWidth("5%");
+}).WithPaging(15)

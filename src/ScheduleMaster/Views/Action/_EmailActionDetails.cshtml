@@ -1,0 +1,98 @@
+﻿@model ScheduleMaster.Models.ViewModels.ActionConfiguration.CreateEmailActionViewModel
+
+<div class="form-horizontal">
+    @if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Any()))
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            @Html.ValidationSummary(false, "Errors: ")
+        </div>
+    }
+
+    @Html.HiddenFor(m=>m.ActionConfiguration.Id)
+    @Html.HiddenFor(m=>m.ActionType)
+    @Html.HiddenFor(m=>m.ActionConfiguration.JobConfigurationId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.Name, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.Name)" name="@Html.NameFor(m => m.ActionConfiguration.Name)" value="@Model.ActionConfiguration.Name" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.RegularExpression, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.RegularExpression)" name="@Html.NameFor(m => m.ActionConfiguration.RegularExpression)" value="@Model.ActionConfiguration.RegularExpression" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.Active, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            @Html.CheckBoxFor(m => m.ActionConfiguration.Active)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.From, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.From)" name="@Html.NameFor(m => m.ActionConfiguration.From)" value="@Model.ActionConfiguration.From" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.To, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.To)" name="@Html.NameFor(m => m.ActionConfiguration.To)" value="@Model.ActionConfiguration.To" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.CC, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.CC)" name="@Html.NameFor(m => m.ActionConfiguration.CC)" value="@Model.ActionConfiguration.CC" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.Subject, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.Subject)" name="@Html.NameFor(m => m.ActionConfiguration.Subject)" value="@Model.ActionConfiguration.Subject" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.SmtpHost, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.SmtpHost)" name="@Html.NameFor(m => m.ActionConfiguration.SmtpHost)" value="@Model.ActionConfiguration.SmtpHost" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.SmtpPort, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.SmtpPort)" name="@Html.NameFor(m => m.ActionConfiguration.SmtpPort)" value="@Model.ActionConfiguration.SmtpPort" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.SmtpUsername, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.SmtpUsername)" name="@Html.NameFor(m => m.ActionConfiguration.SmtpUsername)" value="@Model.ActionConfiguration.SmtpUsername" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.SmtpPassword, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            <input type="text" id="@Html.IdFor(m => m.ActionConfiguration.SmtpPassword)" name="@Html.NameFor(m => m.ActionConfiguration.SmtpPassword)" value="@Model.ActionConfiguration.SmtpPassword" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActionConfiguration.SmtpEnableSSL, new {@class = "control-label col-sm-4"})
+        <div class="col-sm-8">
+            @Html.CheckBoxFor(m=>m.ActionConfiguration.SmtpEnableSSL)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <button type="submit" class="btn btn-default">Save</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to Edit Job", "Edit",new { Controller="MonitorJobs",id=Model.ActionConfiguration.JobConfigurationId})
+</div>

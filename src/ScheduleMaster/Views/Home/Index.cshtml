@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Schedule Master</h1>
+    <p class="lead">Schedule Master is utility to schedule jobs to run.</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Getting started</h2>
+        <p>
+            Search for jobs.
+        </p>
+    </div>
+</div>
+@using (var form = Html.BeginForm("Index", "MonitorJobs", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+
+                <input type="text" name="searchTerm" max="100" class="form-control" placeholder="Job name...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Search</button>
+                </span>
+
+            </div><!-- /input-group -->
+        </div>
+    </div>
+}
