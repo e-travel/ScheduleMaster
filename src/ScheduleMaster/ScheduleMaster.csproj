@@ -245,6 +245,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Grid.mvc.readme" />
+    <None Include="Properties\PublishProfiles\filesystem.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -283,7 +284,6 @@
     <Content Include="Views\Action\Edit.cshtml" />
     <None Include="Views\Action\Index.cshtml" />
     <Content Include="Views\Action\_EmailActionDetails.cshtml" />
-    <Content Include="Views\Action\_BaseActionDetails.cshtml" />
     <Content Include="Views\Action\_HipChatActionDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
