@@ -50,3 +50,9 @@
 
 [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) are a easy way to extract data from a message using named groups like ``(?<firstname>\w+)``. If the expression matches i will return all
 matched groups with name and value ``firstname=John``. If it don't matches it will return the raw message.
+
+## Thanks to the innovation team
+
+- George Gkogkolis
+- Nikos Sideris
+- Sotirios Mantziaris
