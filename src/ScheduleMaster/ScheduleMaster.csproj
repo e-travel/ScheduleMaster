@@ -197,6 +197,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ApplicationPreload.cs" />
+    <Compile Include="HangfireBootstrapper.cs" />
     <Compile Include="Component\HipChatActionCommand.cs" />
     <Compile Include="Component\HangfireAdapter.cs" />
     <Compile Include="Controllers\ActionController.cs" />

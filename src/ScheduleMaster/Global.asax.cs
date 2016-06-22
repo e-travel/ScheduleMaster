@@ -1,10 +1,6 @@
-using System.Linq;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ScheduleMaster.DataAccess;
-using ScheduleMaster.Models.Entities;
-using Hangfire;
 
 namespace ScheduleMaster
 {
@@ -16,6 +12,13 @@ namespace ScheduleMaster
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            HangfireBootstrapper.Instance.Start();
+        }
+
+        protected void Application_End()
+        {
+            HangfireBootstrapper.Instance.Stop();
         }
     }
 }

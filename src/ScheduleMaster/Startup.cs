@@ -18,14 +18,11 @@ namespace ScheduleMaster
                 var a = db.ActionConfigurations.OfType<EmailActionConfiguration>().FirstOrDefault();
             }
 
-            //Hangfire
-            GlobalConfiguration.Configuration.UseSqlServerStorage("ScheduleMasterDatabaseConnectionString");
-            app.UseHangfire(config =>
+            DashboardOptions options = new DashboardOptions
             {
-                config.UseAuthorizationFilters();
-            });
-            app.UseHangfireServer();
-            app.UseHangfireDashboard();
+                AppPath = "/"
+            };
+            app.UseHangfireDashboard("/hangfire", options);
         }
     }
 }
