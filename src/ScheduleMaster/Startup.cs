@@ -19,7 +19,10 @@ namespace ScheduleMaster
             }
 
             //Hangfire
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                AuthorizationFilters = new[] { new HangfireRestrictiveAuthorizationFilter() }
+            });
         }
     }
 }
