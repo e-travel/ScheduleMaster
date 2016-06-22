@@ -20,6 +20,10 @@ namespace ScheduleMaster
 
             //Hangfire
             GlobalConfiguration.Configuration.UseSqlServerStorage("ScheduleMasterDatabaseConnectionString");
+            app.UseHangfire(config =>
+            {
+                config.UseAuthorizationFilters();
+            });
             app.UseHangfireServer();
             app.UseHangfireDashboard();
         }
