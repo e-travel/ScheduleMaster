@@ -18,11 +18,8 @@ namespace ScheduleMaster
                 var a = db.ActionConfigurations.OfType<EmailActionConfiguration>().FirstOrDefault();
             }
 
-            DashboardOptions options = new DashboardOptions
-            {
-                AppPath = "/"
-            };
-            app.UseHangfireDashboard("/hangfire", options);
+            //Hangfire
+            app.UseHangfireDashboard();
         }
     }
 }
