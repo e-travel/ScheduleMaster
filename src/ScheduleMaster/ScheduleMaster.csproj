@@ -284,9 +284,9 @@
     <Content Include="Views\MonitorJobs\Edit.cshtml" />
     <Content Include="Views\MonitorJobs\Create.cshtml" />
     <Content Include="Views\MonitorJobs\_JobDetails.cshtml" />
-    <None Include="Views\Action\Create.cshtml" />
+    <Content Include="Views\Action\Create.cshtml" />
     <Content Include="Views\Action\Edit.cshtml" />
-    <None Include="Views\Action\Index.cshtml" />
+    <Content Include="Views\Action\Index.cshtml" />
     <Content Include="Views\Action\_EmailActionDetails.cshtml" />
     <Content Include="Views\Action\_HipChatActionDetails.cshtml" />
   </ItemGroup>
