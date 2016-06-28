@@ -7,6 +7,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using System;
 
 namespace ScheduleMaster.Component
 {
@@ -20,7 +21,14 @@ namespace ScheduleMaster.Component
         {
             _configuration = configuration;
             _queueMessages = queueMessages;
-            _extractionRegex = new Regex(configuration.RegularExpression);
+            if (!string.IsNullOrWhiteSpace(configuration.RegularExpression) && IsValidRegex(configuration.RegularExpression))
+            {
+                _extractionRegex = new Regex(configuration.RegularExpression);
+            }
+            else
+            {
+                _extractionRegex = null;
+            }
         }
 
         public Task<bool> ExecuteAsync()
@@ -67,6 +75,11 @@ namespace ScheduleMaster.Component
 
             foreach (var rawMessage in rawMessages)
             {
+                if(_extractionRegex == null)
+                {
+                    return rawMessages;
+                }
+
                 var match = _extractionRegex.Match(rawMessage);
 
                 // if one does not match then we should return the messages in raw format
@@ -134,6 +147,23 @@ namespace ScheduleMaster.Component
             }
 
             return true;
-        }        
+        }
+
+        private static bool IsValidRegex(string pattern)
+        {
+            if (string.IsNullOrEmpty(pattern)) return false;
+
+            try
+            {
+                Regex.Match("", pattern);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }
