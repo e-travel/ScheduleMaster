@@ -2,7 +2,7 @@
 
 ## A simple job scheduler based on the excellent library [hangfire.io](http://hangfire.io)
 
-### This implementation allows the user to configure via UI jobs that will run on a schedule using [hangfire.io](http://hangfire.io)
+This implementation allows the user to configure via UI jobs that will run on a schedule using [hangfire.io](http://hangfire.io)
 
 ### The following jobs can be scheduled
 
