@@ -11,7 +11,7 @@ using System;
 
 namespace ScheduleMaster.Component
 {
-    public class EmailActionCommand : ICommand
+    public class EmailActionCommand : ActionBaseCommand, ICommand
     {
         private readonly EmailActionConfiguration _configuration;
         private readonly QueueMessage[] _queueMessages;
@@ -148,22 +148,5 @@ namespace ScheduleMaster.Component
 
             return true;
         }
-
-        private static bool IsValidRegex(string pattern)
-        {
-            if (string.IsNullOrEmpty(pattern)) return false;
-
-            try
-            {
-                Regex.Match("", pattern);
-            }
-            catch (ArgumentException)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
     }
 }

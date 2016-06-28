@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ScheduleMaster.Component
 {
-    public class HipChatActionCommand : ICommand
+    public class HipChatActionCommand : ActionBaseCommand, ICommand
     {
         private readonly HipchatActionConfiguration _configuration;
         private readonly QueueMessage[] _queueMessages;
@@ -22,7 +22,14 @@ namespace ScheduleMaster.Component
         {
             _configuration = configuration;
             _queueMessages = queueMessages;
-            _extractionRegex = new Regex(configuration.RegularExpression, RegexOptions.Compiled);
+            if (!string.IsNullOrWhiteSpace(configuration.RegularExpression) && IsValidRegex(configuration.RegularExpression))
+            {
+                _extractionRegex = new Regex(configuration.RegularExpression);
+            }
+            else
+            {
+                _extractionRegex = null;
+            }
             _queueName = queueName;
         }
 
@@ -72,6 +79,11 @@ namespace ScheduleMaster.Component
 
             foreach (var rawMessage in rawMessages)
             {
+                if(_extractionRegex == null)
+                {
+                    return rawMessages;
+                }
+
                 var match = _extractionRegex.Match(rawMessage);
 
                 // if one does not match then we should return the messages in raw format

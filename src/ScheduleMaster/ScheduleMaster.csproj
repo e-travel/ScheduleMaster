@@ -198,6 +198,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ApplicationPreload.cs" />
+    <Compile Include="Component\ActionBaseCommand.cs" />
     <Compile Include="HangfireRestrictiveAuthorizationFilter .cs" />
     <Compile Include="HangfireBootstrapper.cs" />
     <Compile Include="Component\HipChatActionCommand.cs" />
