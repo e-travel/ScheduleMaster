@@ -20,7 +20,7 @@ namespace ScheduleMaster.Component
         {
             _configuration = configuration;
             _queueMessages = queueMessages;
-            _extractionRegex = new Regex(configuration.RegularExpression, RegexOptions.Compiled);
+            _extractionRegex = new Regex(configuration.RegularExpression);
         }
 
         public Task<bool> ExecuteAsync()
