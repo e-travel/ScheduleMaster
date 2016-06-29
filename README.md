@@ -51,6 +51,24 @@ This implementation allows the user to configure via UI jobs that will run on a 
 [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) are a easy way to extract data from a message using named groups like ``(?<firstname>\w+)``. If the expression matches i will return all
 matched groups with name and value ``firstname=John``. If it don't matches it will return the raw message.
 
+## Development
+
+The solution is developed in Visual Studio 2015. As a backend you can use Sql Server 2016 Express.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at
+https://github.com/e-travel/ScheduleMaster. This project is intended
+to be a safe, welcoming space for collaboration, and contributors are
+expected to adhere to the
+[Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
+## License
+
+The applicatrion is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
+
 ## Thanks to the innovation team
 
 - George Gkogkolis
