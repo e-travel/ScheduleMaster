@@ -1,7 +1,6 @@
 ﻿using ScheduleMaster.DataAccess;
 using ScheduleMaster.Models.Entities;
 using ScheduleMaster.Sqs;
-using ETravel.SqsService.Sqs;
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -16,9 +15,9 @@ namespace ScheduleMaster.Component
         {
             var jobConfiguration = new ScheduleMasterContext().JobConfigurations.Include(c => c.ActionConfigurations).SingleOrDefault(p=>p.Id == jobId);
 
-            using (var wrapper = CreateSqsWrapper(jobConfiguration))
+            using (var sqsClient = CreateSqsClient(jobConfiguration))
             {
-                var messages = wrapper.Dequeue(jobConfiguration.NumberOfDequeueMessages);
+                var messages = sqsClient.Pop(jobConfiguration.NumberOfDequeueMessages);
 
                 if(messages.Count == 0)
                 {
@@ -43,16 +42,16 @@ namespace ScheduleMaster.Component
 
                 if (jobConfiguration.DeleteMessageAfterSuccess)
                 {
-                    DeleteMessagesFromQueue(wrapper, messages);
+                    DeleteMessagesFromQueue(sqsClient, messages);
                 }
             }
 
             return true;
         }
 
-        private ISqsWrapper CreateSqsWrapper(JobConfiguration configuration)
+        private ISqsClient CreateSqsClient(JobConfiguration configuration)
         {
-            return new SqsWrapper(configuration.SqsAccessKey, configuration.SqsSecretKey, configuration.SqsRegion, 
+            return new SqsClient(configuration.SqsAccessKey, configuration.SqsSecretKey, configuration.SqsRegion, 
                                   configuration.SqsQueueUrl, configuration.LongPollingTimeSeconds, 
                                   configuration.NumberOfDequeueMessages);
         }
@@ -83,13 +82,13 @@ namespace ScheduleMaster.Component
             return commands.ToArray();
         }
 
-        private void DeleteMessagesFromQueue(ISqsWrapper wrapper, IList<QueueMessage> messages)
+        private void DeleteMessagesFromQueue(ISqsClient client, IList<QueueMessage> messages)
         {
             try
             {
                 foreach (var message in messages)
                 {
-                    wrapper.Delete(message);
+                    client.Delete(message.MessageId);
                 }
             }
             catch(Exception)

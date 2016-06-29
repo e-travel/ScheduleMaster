@@ -1,6 +1,5 @@
 ﻿using System.Net.Mail;
 using ScheduleMaster.Models.Entities;
-using ETravel.SqsService.Sqs;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using System;
+using ScheduleMaster.Sqs;
 
 namespace ScheduleMaster.Component
 {

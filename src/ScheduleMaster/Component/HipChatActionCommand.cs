@@ -1,5 +1,4 @@
 ﻿using ScheduleMaster.Models.Entities;
-using ETravel.SqsService.Sqs;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -8,6 +7,7 @@ using HipchatApiV2;
 using System;
 using HipchatApiV2.Enums;
 using System.Threading.Tasks;
+using ScheduleMaster.Sqs;
 
 namespace ScheduleMaster.Component
 {
