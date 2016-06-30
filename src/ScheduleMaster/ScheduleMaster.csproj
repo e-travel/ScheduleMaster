@@ -286,6 +286,7 @@
     <Content Include="Views\Action\Index.cshtml" />
     <Content Include="Views\Action\_EmailActionDetails.cshtml" />
     <Content Include="Views\Action\_HipChatActionDetails.cshtml" />
+    <Content Include="Views\Home\Status.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,7 +1,4 @@
-﻿using ScheduleMaster.Component;
-using ScheduleMaster.Models.Entities;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace ScheduleMaster.Controllers
 {
@@ -10,10 +7,13 @@ namespace ScheduleMaster.Controllers
         [HttpGet]
         public ViewResult Index()
         {
-            
-
             return View();
         }
-        
+
+        [HttpGet]
+        public ViewResult Status()
+        {
+            return View();
+        }
     }
 }
