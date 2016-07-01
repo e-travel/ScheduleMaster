@@ -8,6 +8,7 @@ namespace ScheduleMaster
     {
         protected void Application_Start()
         {
+            ScheduleMasterConfig.StartUp();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
