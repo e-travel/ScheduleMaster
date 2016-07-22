@@ -53,7 +53,6 @@ namespace ScheduleMaster.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken()]
         public async Task<ActionResult> Edit(JobDetailsViewModel viewModel)
         {
             try
@@ -93,7 +92,6 @@ namespace ScheduleMaster.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken()]
         public async Task<ActionResult> Create(JobDetailsViewModel viewModel)
         {
             if (ModelState.IsValid)

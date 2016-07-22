@@ -16,10 +16,7 @@
         <hr />
         @using (Html.BeginForm("Edit", "MonitorJobs", FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            @Html.AntiForgeryToken()
-
             @Html.Partial("_JobDetails", Model)
-
         }
 
 
