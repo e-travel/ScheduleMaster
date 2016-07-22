@@ -7,15 +7,12 @@ using System.Collections.Generic;
 using ScheduleMaster.Models.Entities;
 using ScheduleMaster.Models.ViewModels;
 using ScheduleMaster.Component;
-using NLog;
 using System;
 
 namespace ScheduleMaster.Controllers
 {
     public class MonitorJobsController : BaseController
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
-
         // GET: MonitorJobs
         [HttpGet]
         public ViewResult Index(string searchTerm)
@@ -55,28 +52,20 @@ namespace ScheduleMaster.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(JobDetailsViewModel viewModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
 
-                    return await InsertOrUpdate(viewModel, EntityState.Modified);
-                }
-                else
-                {
-
-                    viewModel.JobConfiguration.ActionConfigurations = Database.ActionConfigurations
-                        .Where(a => a.JobConfigurationId == viewModel.JobConfiguration.Id)
-                        .ToList();
-
-                    return View(viewModel);
-                }
+                return await InsertOrUpdate(viewModel, EntityState.Modified);
             }
-            catch(Exception exception)
+            else
             {
-                logger.Error(exception);
-                throw;
-            }            
+
+                viewModel.JobConfiguration.ActionConfigurations = Database.ActionConfigurations
+                    .Where(a => a.JobConfigurationId == viewModel.JobConfiguration.Id)
+                    .ToList();
+
+                return View(viewModel);
+            }
         }
 
         [HttpGet]
