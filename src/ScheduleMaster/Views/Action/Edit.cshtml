@@ -20,7 +20,6 @@
                 case ActionType.EmailActionConfiguration:
                     using (Html.BeginForm("Edit", "Action", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
-                        @Html.AntiForgeryToken()
                         @Html.Partial("_EmailActionDetails", (CreateEmailActionViewModel) Model)
                         ;
                     }
@@ -28,7 +27,6 @@
                 case ActionType.HipchatActionConfiguration:
                     using (Html.BeginForm("EditHipChat", "Action", FormMethod.Post, new { @class = "form-horizontal" }))
                     {
-                        @Html.AntiForgeryToken()
                         @Html.Partial("_HipChatActionDetails", (CreateHipChatActionViewModel) Model)
                         ;
                     }

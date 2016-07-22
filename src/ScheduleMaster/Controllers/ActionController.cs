@@ -47,7 +47,6 @@ namespace ScheduleMaster.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateHipChat(CreateHipChatActionViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -61,7 +60,6 @@ namespace ScheduleMaster.Controllers
             return View("Create",viewModel);
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CreateEmailActionViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -121,7 +119,6 @@ namespace ScheduleMaster.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(CreateEmailActionViewModel viewModel)
         {
 
@@ -134,7 +131,6 @@ namespace ScheduleMaster.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditHipChat(CreateHipChatActionViewModel viewModel)
         {
 
