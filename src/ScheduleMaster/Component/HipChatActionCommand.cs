@@ -18,7 +18,7 @@ namespace ScheduleMaster.Component
         private readonly Regex _extractionRegex;
         private readonly string _queueName;
 
-        public HipChatActionCommand(HipchatActionConfiguration configuration, string queueName,QueueMessage[] queueMessages)
+        public HipChatActionCommand(HipchatActionConfiguration configuration, string queueName, QueueMessage[] queueMessages)
         {
             _configuration = configuration;
             _queueMessages = queueMessages;
@@ -79,7 +79,7 @@ namespace ScheduleMaster.Component
 
             foreach (var rawMessage in rawMessages)
             {
-                if(_extractionRegex == null)
+                if (_extractionRegex == null)
                 {
                     return rawMessages;
                 }
@@ -128,11 +128,9 @@ namespace ScheduleMaster.Component
         {
             var client = new HipchatClient(_configuration.ApiKey);
 
-            var existingRoomId = client.GetRoom(_configuration.RoomName);
-
             var roomColor = (RoomColors)Enum.Parse(typeof(RoomColors), _configuration.NotificationColor, true);
 
-            var sendMessageResult = client.SendNotification(existingRoomId.Id, body, roomColor, true, HipchatMessageFormat.Text);
+            var sendMessageResult = client.SendNotification(_configuration.RoomName, body, roomColor, true, HipchatMessageFormat.Text);
 
             if (!sendMessageResult)
             {
