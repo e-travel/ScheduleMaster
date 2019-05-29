@@ -66,7 +66,7 @@ expected to adhere to the
 
 ## License
 
-The applicatrion is available as open source under the terms of the
+The application is available as open source under the terms of the
 [MIT License](http://opensource.org/licenses/MIT).
 
 ## Thanks to the innovation team
